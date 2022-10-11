@@ -14,7 +14,7 @@ pipeline{
     stages{
         stage("Example"){
         steps{
-            echo "Hello $params.Person"
+            echo "Hello $params.Java-Version"
             echo "$params.BIOGRAPHY"
             echo "Toggle: ${params.TOGGLE}"
 
