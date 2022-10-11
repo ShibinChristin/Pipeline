@@ -1,7 +1,7 @@
 pipeline{
     agent any 
     parameters{
-        string(name : 'Java-Version', defaultValue : '14' , description : "Which java version would you like ?")
+        string(name : 'Person', defaultValue : 'Shibin' , description : "Which java version would you like ?")
         
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
         
@@ -14,7 +14,7 @@ pipeline{
     stages{
         stage("Example"){
         steps{
-            echo "Hello $params.Java-Version"
+            echo "Hello $params.Person"
             echo "$params.BIOGRAPHY"
             echo "Toggle: ${params.TOGGLE}"
 
