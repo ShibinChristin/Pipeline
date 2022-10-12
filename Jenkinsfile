@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Compile process') {
             steps {
-                if ($params.Execute==true) {
+                if ($params.Execute.toBoolean()) {
                     sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
                 }
                 else {
