@@ -1,8 +1,8 @@
 pipeline {
     agent any
     parameters {
-        choice(name : PersonChoice, choices:['yes', 'no'])
-    }
+  choice choices: ['yes', 'no'], description: 'Yes or no to the choice', name: 'PersonChoice'
+}
 
     stages {
         stage('Extract from github') {
@@ -11,11 +11,11 @@ pipeline {
             }
         }
         stage('Compile process') {
-            // when {
-            //     expression {
-            //         params.PersonChoice == 'yes'
-            //     }
-            // }
+            when {
+                expression {
+                    params.PersonChoice == 'yes'
+                }
+            }
             steps {
                 sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
             }
