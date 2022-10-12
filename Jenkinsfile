@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        booleanParam description: 'To execute the program or not', name: 'Execute'
+        choice(name : PersonChoice , choices:['yes','no'])
     }
 
     stages {
@@ -13,7 +13,7 @@ pipeline {
         stage('Compile process') {
             steps {
                 script {
-                    if ($params.Execute) {
+                    if ($params.PersonChoice=="yes") {
                         sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
                     }
                 else {
