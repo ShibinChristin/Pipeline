@@ -7,9 +7,13 @@ pipeline{
             }
         }
         stage("Compile process"){
-            steps{
+            try{
                 sh "g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp"
+                catch(Err){
+                    echo "Build number ${env.BUILD_NUMBER} failed"
+                }
             }
+
         }
     }
 }
