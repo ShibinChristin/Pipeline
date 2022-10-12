@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage("Update Docker"){
             steps{
-                sh "apt-get update"
+                sh "sudo apt-get update"
             }
         }
     }
