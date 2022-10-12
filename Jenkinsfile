@@ -11,11 +11,11 @@ pipeline {
             }
         }
         stage('Compile process') {
-            when {
-                expression {
-                    params.PersonChoice == 'yes'
-                }
-            }
+            // when {
+            //     expression {
+            //         params.PersonChoice == 'yes'
+            //     }
+            // }
             steps {
                 sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
             }
