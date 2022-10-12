@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        choice(name : PersonChoice , choices:['yes','no'])
+        choice(name : PersonChoice, choices:['yes', 'no'])
     }
 
     stages {
@@ -11,15 +11,13 @@ pipeline {
             }
         }
         stage('Compile process') {
+            when {
+                expression {
+                    params.PersonChoice == 'yes'
+                }
+            }
             steps {
-                script {
-                    if ($params.PersonChoice=="yes") {
-                        sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
-                    }
-                else {
-                        echo "Unable to build ${env.BUILD_NUMBER}"
-                }
-                }
+                sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
             }
         }
     }
