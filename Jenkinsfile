@@ -12,11 +12,13 @@ pipeline {
         }
         stage('Compile process') {
             steps {
-                if ($params.Execute.toBoolean()) {
-                    sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
-                }
+                script {
+                    if ($params.Execute) {
+                        sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
+                    }
                 else {
-                    echo "Unable to build ${env.BUILD_NUMBER}"
+                        echo "Unable to build ${env.BUILD_NUMBER}"
+                }
                 }
             }
         }
