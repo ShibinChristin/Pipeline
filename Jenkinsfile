@@ -1,6 +1,5 @@
 pipeline{
     agent any
-    }
     stages{
         stage("Extract from github"){
             steps{
@@ -13,3 +12,4 @@ pipeline{
             }
         }
     }
+}
