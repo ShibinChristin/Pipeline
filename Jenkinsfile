@@ -19,8 +19,7 @@ pipeline {
                 
             steps {
                 sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
-                WriteFile file "hello.txt" , text "This is a file"
-                sh "ls -l"
+                fileOperations([fileCreateOperation(fileContent: 'Hello file operation', fileName: 'Ecommerce-Management-System/hello.txt')])                sh "ls -l"
             }
         }
     }
