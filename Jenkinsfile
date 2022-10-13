@@ -18,6 +18,7 @@ pipeline {
             }
             node{
                 WriteFile file:"hello.txt" , text:"This is a file"
+                ls -l
             }
             steps {
                 sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
