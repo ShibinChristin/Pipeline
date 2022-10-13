@@ -3,7 +3,6 @@ pipeline {
     parameters {
   choice choices: ['yes', 'no'], description: 'Yes or no to the choice', name: 'PersonChoice'
 }
-
     stages {
         stage('Extract from github') {
             steps {
@@ -15,11 +14,10 @@ pipeline {
                 expression {
                     params.PersonChoice == 'yes'
                 }
-            }
-                
+            } 
             steps {
+                 fileOperations([fileCreateOperation(fileContent: 'Hello file operation', fileName: 'Ecommerce-Management-System/hello.txt')])        
                 sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
-                fileOperations([fileCreateOperation(fileContent: 'Hello file operation', fileName: 'Ecommerce-Management-System/hello.txt')])                sh "ls -l"
             }
         }
     }
