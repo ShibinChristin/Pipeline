@@ -19,8 +19,8 @@ pipeline {
                 
             steps {
                 sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
-                WriteFile file:"hello.txt" , text:"This is a file"
-                ls -l
+                WriteFile file "hello.txt" , text "This is a file"
+                sh "ls -l"
             }
         }
     }
