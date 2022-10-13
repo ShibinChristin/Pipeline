@@ -16,8 +16,12 @@ pipeline {
                     params.PersonChoice == 'yes'
                 }
             }
+            node{
+                WriteFile file:"hello.txt" , text:"This is a file"
+            }
             steps {
                 sh 'g++ Ecommerce.cpp Merchant.cpp Customer.cpp Courier.cpp main.cpp'
+
             }
         }
     }
