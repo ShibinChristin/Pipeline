@@ -2,6 +2,7 @@ pipeline {
     agent any
     parameters {
   choice choices: ['create file', 'Upload file','Rename file','Delete file','Delete workspace'], description: 'Choose an option', name: 'Option'
+    base64File 'THEFILE'
 }
 options{
     // timestamps()
@@ -20,8 +21,9 @@ options{
                         cleanWs()
                     }
                     else if(params.Option=="Upload file"){
-                        def inputFile = input message : "Upload File",parameters:[base64File(file)]
                         cleanWs()
+                        withFileParameter('THEFILE') {
+                            sh 'cat $THEFILE'                        
                         // Get file using input step, will put it in build directory
 }
     }
