@@ -4,7 +4,7 @@ pipeline {
   choice choices: ['create file', 'Upload file','Rename file','Delete file','Delete workspace'], description: 'Choose an option', name: 'Option'
 }
 options{
-    timestamp()
+    // timestamps()
     skipDefaultCheckout()
 }
     stages {
