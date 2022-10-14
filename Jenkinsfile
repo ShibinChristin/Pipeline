@@ -11,10 +11,20 @@ options{
             steps{
                 script{
                     if(params.Option=="create file"){
+                        echo"Creating a smaple file"
                         fileOperations([fileCreateOperation(fileContent: 'This is a sample file created by FileOperation Create', fileName: 'Sample.txt')])
                     }
                     else if(params.Option=="Delete workspace"){
+                       echo"Deleting workspce"
                         cleanWs()
+                    }
+                    else if(params.Option=="Upload file"){
+                        cleanWs()
+                        // Get file using input step, will put it in build directory
+print "=================Please upload your property file here ====================="
+def inputFile = input message: 'Upload file', parameters: [file(name: 'global.properties')]
+// Read contents and write to workspace
+writeFile(file: 'global.properties', text: inputFile.readToString())
                     }
                 }
             }
