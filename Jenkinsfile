@@ -22,9 +22,14 @@ options{
                         cleanWs()
                         // Get file using input step, will put it in build directory
 print "=================Please upload your property file here ====================="
-def inputFile = input message: 'Upload file', parameters: [file(name: 'global.properties')]
-// Read contents and write to workspace
-writeFile(file: 'global.properties', text: inputFile.readToString())
+def fileBase64 = input message: 'Please provide a file', parameters: [base64File('file')]
+node {
+    withEnv(["fileBase64=$fileBase64"]) {
+        sh 'echo $fileBase64 | base64 -d > myFile.txt'
+        // powershell '[IO.File]::WriteAllBytes("myFile.txt", [Convert]::FromBase64String($env:fileBase64))'
+    }
+    // do something with the file stored in ./myFile.txt
+}
                     }
                 }
             }
