@@ -29,4 +29,3 @@ def fileBase64 = input message: 'Please provide a file', parameters: [base64File
             
 }
     }
-}
