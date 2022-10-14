@@ -21,7 +21,7 @@ options{
                     else if(params.Option=="Upload file"){
                         cleanWs()
                         // Get file using input step, will put it in build directory
-                        def fileBase64 = input message: 'Please provide a file', parameters: [base64File('file')]
+                        def inputFile = input message: 'Please provide a file', parameters: [base64File('file')]
     }
                     }
                 }
