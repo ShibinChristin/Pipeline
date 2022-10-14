@@ -21,10 +21,11 @@ options{
                     else if(params.Option=="Upload file"){
                         cleanWs()
                         // Get file using input step, will put it in build directory
-                        script{
-                            def inputFile = input message: 'Upload file', parameters: [file(name: 'global.properties')]
-
-                        }
+                        def file = input message: 'Please provide a file', parameters: [file('myFile.txt')]
+node('built-in') {
+    // do something with the file stored in $file
+    sh "cat file"
+}
     }
                     }
                 }
