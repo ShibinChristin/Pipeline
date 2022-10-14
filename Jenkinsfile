@@ -21,15 +21,8 @@ options{
                     else if(params.Option=="Upload file"){
                         cleanWs()
                         // Get file using input step, will put it in build directory
-print "=================Please upload your property file here ====================="
 def fileBase64 = input message: 'Please provide a file', parameters: [base64File('file')]
-node {
-    withEnv(["fileBase64=$fileBase64"]) {
-        sh 'echo $fileBase64 | base64 -d > myFile.txt'
-        // powershell '[IO.File]::WriteAllBytes("myFile.txt", [Convert]::FromBase64String($env:fileBase64))'
     }
-    // do something with the file stored in ./myFile.txt
-}
                     }
                 }
             }
